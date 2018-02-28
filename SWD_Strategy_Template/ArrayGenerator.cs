@@ -15,9 +15,9 @@ namespace SWD_Strategy_Template
     {
         public int[] GenerateArray(int n, int seed = 0)
         {
-            Random rg = new Random(seed);
-            int[] randArray = new int[n];
-            for (int i = 0; i < n; i++)
+            var rg = new Random(seed);
+            var randArray = new int[n];
+            for (var i = 0; i < n; i++)
             {
                 randArray[i] = rg.Next(0,n);
             }
@@ -29,8 +29,8 @@ namespace SWD_Strategy_Template
     {
         public int[] GenerateArray(int n, int seed = 0)
         {
-            int[] rorderArray = new int[n];
-            for (int i = 0; i < n; i++)
+            var rorderArray = new int[n];
+            for (var i = 0; i < n; i++)
             {
                 rorderArray[i] = n-i-1;
             }
@@ -38,14 +38,27 @@ namespace SWD_Strategy_Template
         }
     }
 
+    public class OrderedArrayGenerator : IArrayGenerator
+    {
+        public int[] GenerateArray(int n, int seed = 0)
+        {
+            var orderedArray = new int[n];
+            for (var i = 0; i < n; i++)
+            {
+                orderedArray[i] = i;
+            }
+            return orderedArray;
+        }
+    }
+
     public class NearlySortedArrayGenerator : IArrayGenerator
     {
         public int[] GenerateArray(int n, int seed)
         {
-            Random random = new Random(seed);
-            int[] nearlySortedArray = new int[n];
+            var random = new Random(seed);
+            var nearlySortedArray = new int[n];
 
-            for (int i = 0; i < n; i++)
+            for (var i = 0; i < n; i++)
             {
                 if (i % 5 == 0)
                 {

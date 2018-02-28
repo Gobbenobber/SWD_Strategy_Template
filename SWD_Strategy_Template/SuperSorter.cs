@@ -122,14 +122,14 @@ namespace SWD_Strategy_Template
             QuicklySort(toBeSorted, 0, toBeSorted.Length - 1);
         }
 
-        private void QuicklySort(int[] a, int start, int end)
+        private void QuicklySort(IList<int> a, int start, int end)
         {
             if (start >= end)
             {
                 return;
             }
 
-            int num = a[start];
+            var num = a[start];
 
             int i = start, j = end;
 
@@ -153,6 +153,10 @@ namespace SWD_Strategy_Template
             a[i] = num;
             QuicklySort(a, start, i - 1);
             QuicklySort(a, i + 1, end);
+        }
+        public override string ToString()
+        {
+            return HasBeenSorted ? "Quick sorted array" : "Non-sorted array";
         }
     }
 }
